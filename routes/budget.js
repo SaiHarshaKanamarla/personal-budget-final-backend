@@ -14,7 +14,7 @@ const jwtMW = exjwt({
     algorithms: ['HS256']
 })
 
-router.get('/',(req,res)=>{  
+router.get('/',jwtMW,(req,res)=>{  
         
     budgetModel.find({})
     .then((data)=>{
@@ -27,7 +27,7 @@ router.get('/',(req,res)=>{
     })    
 })
 
-router.post('/',async (req,res)=>{
+router.post('/',jwtMW,async (req,res)=>{
     console.log("inside post");
     console.log(req.body);    
     let record = await budgetModel.findOne({ title: req.body.title });

@@ -3,10 +3,18 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const feedbackModel = require('../models/feedbackModel');
+const exjwt = require('express-jwt');
+const jwt = require('jsonwebtoken');
 const cors = require('cors');
 router.use(cors());
 
-router.get('/',(req,res)=>{
+const secretKey = 'My super secret key';
+const jwtMW = exjwt({
+    secret : secretKey,
+    algorithms: ['HS256']
+})
+
+router.get('/',jwtMW,(req,res)=>{
     feedbackModel.find({})
     .then((data)=>{
         console.log(data);
@@ -18,7 +26,7 @@ router.get('/',(req,res)=>{
     }) 
 });
 
-router.post('/',async (req,res)=>{
+router.post('/',jwtMW,async (req,res)=>{
     console.log("inside feedback post");
     console.log(req.body);    
     
