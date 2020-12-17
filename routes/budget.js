@@ -15,8 +15,10 @@ const jwtMW = exjwt({
 })
 
 router.get('/',jwtMW,(req,res)=>{  
-        
-    budgetModel.find({})
+    // console.log(req.query)
+    userid = String(req.query.userid);
+    console.log(userid);
+    budgetModel.find({username:userid})
     .then((data)=>{
         console.log(data);
         res.status(200).send(data);
@@ -38,7 +40,8 @@ router.post('/',jwtMW,async (req,res)=>{
         title: req.body.title,
         budget: req.body.budget,
         maxbudget: req.body.maxbudget,
-        color: req.body.color        
+        color: req.body.color,
+        username:req.body.username   
     });
     
     await budgetinfo.save();
