@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node ./bin/www",
+    "start:dev": "NODE_TLS_REJECT_UNAUTHORIZED='0' nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
