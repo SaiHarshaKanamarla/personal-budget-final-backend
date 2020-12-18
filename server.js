@@ -30,7 +30,7 @@ mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true,useCreate
 
 
 app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin','http://68.183.139.30:3000');
     res.setHeader('Access-Control-Allow-Headers','Content-type,Authorization');
     next();
 })    
