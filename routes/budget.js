@@ -32,7 +32,8 @@ router.get('/',jwtMW,(req,res)=>{
 router.post('/',jwtMW,async (req,res)=>{
     console.log("inside post");
     console.log(req.body);    
-    let record = await budgetModel.findOne({ title: req.body.title });
+    //let record = await budgetModel.findOne({ title: req.body.title });
+    let record = await budgetModel.findOne({$and: [{title:req.body.title},{username:req.body.username}]});
     if(record){
         return res.status(400).send('That expense already exists!');
     }else{
