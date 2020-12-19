@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const config = require('config');
 const cors = require('cors');
-
+const port = process.env.PORT || 3000;
 const mongoose  = require('mongoose');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
@@ -16,7 +16,7 @@ const budget = require('./routes/budget');
 const feedback = require('./routes/feedback');
 
 const feedbackModel = require('./models/feedbackModel');
-const port = 3000;
+
 const accessTokenKey = 'My super secret key';
 
 app.use(bodyParser.urlencoded({ extended: true }));
