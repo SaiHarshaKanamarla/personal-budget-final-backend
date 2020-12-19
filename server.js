@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const config = require('config');
 const cors = require('cors');
-app.use(cors());
+
 const mongoose  = require('mongoose');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
@@ -21,6 +21,7 @@ const accessTokenKey = 'My super secret key';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 var url = 'mongodb+srv://harsha-admin:mkbhd9999@personalbudget.492wy.mongodb.net/budgetdata?retryWrites=true&w=majority';
 
